@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <title>Impersonator</title>
+    <version>$version$</version>
+    <authors>Marcel Wijnands</authors>
+    <projectUrl>https://github.com/mwijnands/Impersonator</projectUrl>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <tags>impersonate</tags>
+  </metadata>
+</package>
