@@ -9,7 +9,7 @@ namespace XperiCode.Impersonator.Tests
     {
         private const string DomainName = "";
         private const string UserName = "test";
-        private const string Password = "test";
+        private const string Password = @"92~H\qh|+^9=2!N";
 
         private string GetFullTestUserName()
         {
