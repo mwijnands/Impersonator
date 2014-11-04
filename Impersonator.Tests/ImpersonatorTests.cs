@@ -7,14 +7,23 @@ namespace XperiCode.Impersonator.Tests
     [TestClass]
     public class ImpersonatorTests
     {
-        private const string DomainName = "domainname";
-        private const string UserName = "username";
-        private const string Password = "password";
+        private const string DomainName = "";
+        private const string UserName = "test";
+        private const string Password = "test";
+
+        private string GetFullTestUserName()
+        {
+            if (string.IsNullOrWhiteSpace(DomainName) || ".".Equals(DomainName))
+            {
+                return string.Concat(Environment.MachineName, @"\", UserName);
+            }
+            return string.Concat(DomainName, @"\", UserName);
+        }
 
         [TestMethod]
         public void Should_Impersonate_With_UserName_And_Password()
         {
-            string userName = string.Concat(DomainName, "\\", UserName);
+            string userName = GetFullTestUserName();
 
             using (new Impersonator(userName, Password))
             {
@@ -30,7 +39,7 @@ namespace XperiCode.Impersonator.Tests
             using (new Impersonator(DomainName, UserName, Password))
             {
                 var currentIdentity = WindowsIdentity.GetCurrent();
-                string userName = string.Concat(DomainName, "\\", UserName);
+                string userName = GetFullTestUserName();
 
                 Assert.AreEqual(userName, currentIdentity.Name, true);
             }
@@ -53,7 +62,7 @@ namespace XperiCode.Impersonator.Tests
         [TestMethod]
         public void Should_Get_Identity_With_UserName_And_Password()
         {
-            string userName = string.Concat(DomainName, "\\", UserName);
+            string userName = GetFullTestUserName();
             using (var identity = Impersonator.GetIdentity(userName, Password))
             {
                 Assert.AreEqual(userName, identity.Name, true);
@@ -65,7 +74,7 @@ namespace XperiCode.Impersonator.Tests
         {
             using (var identity = Impersonator.GetIdentity(DomainName, UserName, Password))
             {
-                string userName = string.Concat(DomainName, "\\", UserName);
+                string userName = GetFullTestUserName();
 
                 Assert.AreEqual(userName, identity.Name, true);
             }
