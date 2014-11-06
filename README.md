@@ -9,5 +9,5 @@ Execute code as another user. For more info check out these old blogposts about 
 	using (new Impersonator(@"domainname\username", "password"))
 	{
 		// this code is executed as the user with supplied credentials.
-		var files = Directory.GetFiles("\\server\share\files\");
+		var files = Directory.GetFiles(@"\\server\share\folder");
 	}
