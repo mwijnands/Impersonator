@@ -1,1 +1,1 @@
-nuget pack ../Impersonator/Impersonator.csproj -Build -Prop Configuration=Release
+nuget pack ../Impersonator/Impersonator.csproj -Symbols -Build -Prop Configuration=Release
